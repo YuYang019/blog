@@ -2,7 +2,7 @@
     <div class="header clearfix">
         <ul class="left-nav">
             <li>
-                <router-link to="/home">首页</router-link>
+                <router-link to="/">首页</router-link>
             </li>
         </ul>
         <div class="right-nav">
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-    import logined from './logined.vue'
-    import unlogin from './unlogin.vue'
+    import logined from './logined/logined.vue'
+    import unlogin from './unlogin/unlogin.vue'
     import { mapState,mapActions } from 'vuex'
 
     export default {

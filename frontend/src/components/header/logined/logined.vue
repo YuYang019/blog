@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <span class="name">{{auth.user.nickname}}</span>
+        <span class="name">{{auth.user.username}}</span>
         <span class="split"></span>
         <options-btn></options-btn>
         <publish-btn></publish-btn>
@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import optionsBtn from './logined/optionsBtn.vue'
-    import publishBtn from './logined/publishBtn.vue'
+    import optionsBtn from './optionsBtn.vue'
+    import publishBtn from './publishBtn.vue'
     import { mapState } from 'vuex'
 
     export default {

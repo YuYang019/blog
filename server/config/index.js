@@ -3,7 +3,7 @@
  */
 var config = {
     mongo: {
-
+        uri: 'mongodb://localhost/user'
     },
     session: {
         secrets: 'maoyuyang',

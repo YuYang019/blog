@@ -1,10 +1,12 @@
 /**
  * Created by maoyuyang on 17/8/8.
  */
+//process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const router = require('./router')
 const cors = require('koa-cors')
+const mongoose = require('./connect')
 
 const app = new Koa()
 

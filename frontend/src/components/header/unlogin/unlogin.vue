@@ -7,8 +7,8 @@
 </template>
 
 <script>
-    import loginBtn from './unlogin/loginBtn.vue'
-    import registerBtn from './unlogin/registerBtn.vue'
+    import loginBtn from './loginBtn.vue'
+    import registerBtn from './registerBtn.vue'
     export default {
         components: {
             loginBtn, registerBtn

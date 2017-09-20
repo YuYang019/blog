@@ -4,11 +4,12 @@ import 'element-ui/lib/theme-default/index.css'
 import 'normalize.css'
 import VueRouter from 'vue-router'
 import store from './store'
+import './filters'
 
 import App from './App.vue'
-import Home from './components/home.vue'
-import Work from './components/work.vue'
-import Detail from './components/detail.vue'
+import Home from './components/home/index.vue'
+import Article from './components/article/index.vue'
+import Page from './components/home/articles.vue'
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -16,24 +17,45 @@ Vue.use(VueRouter)
 const routes = [
     {
       path: '/',
-      component: Home
+      redirect: '/page/1',
+      component: Home,
+      // children: [
+      //     {
+      //         path: '',
+      //         component: Page
+      //     },
+      //     {
+      //         path: 'page/:pid',
+      //         name: 'page',
+      //         component: Page
+      //     }
+      // ]
     },
     {
-        path: '/detail',
-        component: Detail
+        path: '/page/:pid',
+        name: 'page',
+        component: Home
     },
     {
-      path: '/home',
-      component: Home
+        path: '/article/:aid',
+        name: 'article',
+        component: Article,
+        meta: {
+            goTop: true
+        }
     },
-    {
-      path: '/work',
-      component: Work
-    }
 ]
 
 const router = new VueRouter({
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.goTop)) {
+        window.scroll(0, 0)
+    }
+
+    next()
 })
 
 new Vue({

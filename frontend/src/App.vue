@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="header-wrapper">
-            <topNav></topNav>
+            <Navbar></Navbar>
         </div>
         <div class="content">
             <router-view></router-view>
@@ -10,10 +10,13 @@
 </template>
 
 <script>
-    import topNav from './components/header/header.vue'
+    import Navbar from './components/header/index.vue'
     import { mapState,mapActions } from 'vuex'
 
     export default {
+        components: {
+            Navbar
+        },
         computed: {
             ...mapState({
                 // 相当于获取 this.$store.state.showmsg.message
@@ -41,15 +44,22 @@
 //                'showMsg'
 //            ])
 //        },
-        components: {
-            topNav
-        }
     }
 </script>
 
 <style lang="sass" type="text/scss">
     body {
-        font-family: Helvetica, sans-serif;
-        background: #EFF2F7;
+        font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        background: #F2F2F2;
+    }
+    /*.header-wrapper {*/
+        /*position: fixed;*/
+        /*top: 0;*/
+        /*left: 0;*/
+        /*width: 100%;*/
+        /*z-index: 9998;*/
+    /*}*/
+    .content {
+        margin-top: 25px;
     }
 </style>

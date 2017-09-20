@@ -1,25 +1,25 @@
 <template>
     <span class="login-btn">
-        <a href="javascript:;" @click="loginFormVisible = true" class="btn">登录</a>
+        <a href="javascript:;" @click="showDialog" class="btn">登录</a>
 
-        <el-dialog title="用户登录" :visible.sync="loginFormVisible">
+        <el-dialog title="用户登录" size="tiny" :visible="showLogin" :before-close="beforeClose">
             <div class="form-wrapper">
                 <el-form :model="user" :rules="loginRules" ref="loginForm">
-                    <el-form-item prop="name">
-                        <el-input v-model="user.name" auto-complete="off" placeholder="用户名">
+                    <el-form-item prop="username">
+                        <el-input v-model="user.username" auto-complete="off" placeholder="用户名">
                             <template slot="prepend"><i class="el-icon-edit"></i></template>
                         </el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密码">
+                        <el-input type="password" v-model="user.password" auto-complete="off" placeholder="密码">
                             <template slot="prepend"><i class="el-icon-edit"></i></template>
                         </el-input>
                     </el-form-item>
-                    <el-form-item>
-                        <el-checkbox-group v-model="user.remember">
-                            <el-checkbox label="下次自动登录" name="type"></el-checkbox>
-                        </el-checkbox-group>
-                    </el-form-item>
+                    <!--<el-form-item>-->
+                        <!--<el-checkbox-group v-model="user.remember">-->
+                            <!--<el-checkbox label="下次自动登录" name="type"></el-checkbox>-->
+                        <!--</el-checkbox-group>-->
+                    <!--</el-form-item>-->
                     <el-button type="primary" @click="localLogin('loginForm')" :loading="loading" class="block-btn">确 定
                     </el-button>
                 </el-form>
@@ -29,20 +29,26 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapActions, mapMutations, mapState } from 'vuex'
 
     export default {
+        computed: {
+            ...mapState({
+                showLogin: ({ showdialog }) => showdialog.showLogin
+            })
+        },
+        created(){
+            console.log(this.showLogin)
+        },
         data() {
             return {
                 loading: false,
-                loginFormVisible: false,
                 user: {
-                    name: '',
+                    username: '',
                     password: '',
-                    remember: ''
                 },
                 loginRules: {
-                    name: [
+                    username: [
                         {
                             required: true,
                             message: '请输入用户名',
@@ -69,6 +75,10 @@
             ...mapActions([
                 'login'
             ]),
+            ...mapMutations({
+                showDialog: 'SHOW_LOGIN_DIALOG',
+                hideDialog: 'HIDE_LOGIN_DIALOG'
+            }),
             localLogin(formName) {
                 //console.log(this.loginForm)
                 this.$refs[formName].validate(valid => {
@@ -80,6 +90,9 @@
                         return false
                     }
                 })
+            },
+            beforeClose() {
+                this.hideDialog()
             }
         }
     }
@@ -93,7 +106,7 @@
             .block-btn {
                 display: block;
                 width: 100%;
-            };
+            }
         }
     }
 </style>

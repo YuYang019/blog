@@ -3,13 +3,13 @@
                 <el-row>
                     <el-col :span="14" :offset="5">
                         <el-card :body-style="{ padding: '30px 30px 50px 30px' }">
-                            <ArticleContent :articleDetail="articleDetail"></ArticleContent>
+                            <ArticleContent v-if="articleDetail" :articleDetail="articleDetail"></ArticleContent>
                             <Like @like="handleToggleLike"></Like>
                             <Prenext :next="nextArticle" :prev="prevArticle"></Prenext>
                             <span class="split"></span>
                             <el-row>
                                 <el-col :span="20" :offset="2">
-                                    <Comment :commentList="commentList" :user="user"></Comment>
+                                    <Comment v-if="commentList && user" :commentList="commentList" :user="user"></Comment>
                                 </el-col>
                             </el-row>
                         </el-card>
@@ -103,7 +103,7 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
+<style lang="sass" type="text/scss">
     .float-right {
         float: right;
     }

@@ -23,7 +23,7 @@
 
         <div class="comments-list">
             <ul>
-                <li v-for="item in commentList">
+                <li v-for="item in commentList" :key="item._id">
                     <Reply :item="item" @getConversation="handleConver"></Reply>
                 </li>
             </ul>
@@ -89,7 +89,7 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
+<style lang="sass" type="text/scss">
     .comments {
         .comments-title {
             margin: 20px 0;

@@ -2,7 +2,7 @@
     <div class="conversation">
         <el-dialog title="查看对话" :visible="showConversation" :before-close="beforeClose">
             <ul>
-                <li v-for="item in conversation" class="comment-item">
+                <li v-for="item in conversation" :key="item._id" class="comment-item">
                     <img :src="item.user_id.avatar" class="avatar">
                     <p class="top">
                         {{item.user_id.username}}<span class="author" v-if="articleDetail.author._id == item.user_id._id">（作者）</span>

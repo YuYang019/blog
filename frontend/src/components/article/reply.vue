@@ -1,5 +1,5 @@
 <template>
-    <div class="comment-item">
+    <div class="comment-item" v-if="articleDetail">
         <img :src="item.user_id.avatar" class="avatar">
         <p class="top">
             {{item.user_id.username}}<span class="author" v-if="articleDetail.author._id == item.user_id._id">（作者）</span>
@@ -72,7 +72,6 @@
             submit(formName) {
                 this.$refs[formName].validate(valid => {
                     if (valid) {
-                        console.log()
                         this.replyComment({
                             cid: this.item._id,
                             aid: this.$route.params.aid,

@@ -1,19 +1,19 @@
 <template>
     <span>
         <el-button type="primary" icon="edit" @click="showDialog"></el-button>
-        <el-dialog title="发布" :visible.sync="showPublish" :before-close="beforeClose">
+        <el-dialog title="发布" :visible="showPublish" :before-close="beforeClose" width="65%">
             <div class="form-wrapper">
-            <el-form :model="textForm" :rules="textRules" ref="textForm">
+              <el-form :model="textForm" :rules="textRules" ref="textForm">
                 <el-form-item prop="title">
-                <el-input v-model="textForm.title" auto-complete="off" placeholder="标题">
-                </el-input>
+                    <el-input v-model="textForm.title" auto-complete="off" placeholder="标题">
+                    </el-input>
                 </el-form-item>
-                <el-form-item prop="content">
-                     <el-input type="textarea" :rows="5" v-model="textForm.content" placeholder="写点什么吧"></el-input>
-                </el-form-item>
-                <el-button type="primary" @click="submit('textForm')" :loading="isLoading" class="btn">确 定
-                </el-button>
-            </el-form>
+              </el-form>
+                <!-- <el-form-item prop="content"> -->
+                     <!-- <el-input type="textarea" :rows="5" v-model="textForm.content" placeholder="写点什么吧"></el-input> -->
+              <vue-editor v-model="textForm.content"></vue-editor>
+                <!-- </el-form-item> -->
+              <el-button type="primary" @click="submit('textForm')" :loading="isLoading" class="btn">确 定</el-button>
             </div>
         </el-dialog>
     </span>
@@ -21,7 +21,12 @@
 
 <script>
     import { mapActions, mapState, mapMutations } from 'vuex'
+    import { VueEditor } from 'vue2-editor'
+
     export default {
+        components: {
+            VueEditor
+        },
         computed: {
             ...mapState({
                 options: ({ options }) => options.item,
@@ -83,8 +88,7 @@
             padding: 5px 8px;
         }
         .btn {
-            float: right;
-            margin-bottom: 15px;
+            margin-top: 15px;
         }
     }
 </style>

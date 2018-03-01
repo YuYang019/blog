@@ -16,7 +16,7 @@
         },
         mounted() {
             // 函数防抖，等到停止滚动才触发
-            this.handleScroll = this.throttle(this.handleScroll, 200)
+            this.handleScroll = this.throttle(this.handleScroll, 100)
             window.addEventListener('scroll', this.handleScroll)
         },
         methods: {

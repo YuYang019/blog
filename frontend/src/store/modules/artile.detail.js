@@ -8,7 +8,7 @@ import {
 } from '../mutation-types'
 
 const state = {
-    item: {}
+    item: ''
 }
 
 const actions = {

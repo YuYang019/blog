@@ -28,6 +28,7 @@
                         break;
                     case 'quit':
                         this.logout()
+                        this.$router.push('/')
                         break;
                     default:
                         break;

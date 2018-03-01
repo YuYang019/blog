@@ -1,5 +1,5 @@
 <template>
-    <div class="article-content">
+    <div class="article-content ql-snow">
         <div class="author">
             <img :src="articleDetail.author.avatar" class="avatar">
             <div class="info">
@@ -11,13 +11,16 @@
         <p class="title">
             {{ articleDetail.title }}
         </p>
-        <div class="text">{{ articleDetail.content }}</div>
+        <div class="text ql-editor" v-html="articleDetail.content"></div>
     </div>
 </template>
 
 <script>
     export default {
         props: ['articleDetail'],
+        created() {
+            console.log(this.articleDetail)
+        },
         methods: {
             back() {
                 this.$router.go(-1)
@@ -26,7 +29,7 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
+<style lang="sass" type="text/scss">
     .article-content {
         .author {
             display: flex;

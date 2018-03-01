@@ -17,8 +17,8 @@
 </template>
 
 <script>
-    import logined from './logined/logined.vue'
-    import unlogin from './unlogin/unlogin.vue'
+    import Logined from './logined/logined.vue'
+    import Unlogin from './unlogin/unlogin.vue'
     import { mapState,mapActions } from 'vuex'
 
     export default {
@@ -30,8 +30,6 @@
             })
         },
         created() {
-            //console.log(this.auth)
-            //console.log(this.$store.state)
             // auth模块的state包括token和user
             if (this.auth.token) {
                 this.getUserInfo()
@@ -44,7 +42,7 @@
             ]),
         },
         components: {
-            logined, unlogin
+            Logined, Unlogin
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="articles">
         <ul>
-            <li class="item" v-for="item in articleList">
+            <li class="item" v-for="item in articleList" :key="item._id">
 
                 <el-card :body-style="{ padding: '25px 15px 15px 15px' }">
                     <div class="top">

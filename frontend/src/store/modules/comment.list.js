@@ -12,7 +12,7 @@ import {
 
 let state = {
     isFetching: false,
-    items: []
+    items: ''
 }
 
 const actions = {

@@ -3,7 +3,7 @@
         <span class="pre" @click="goPre" :class="currentPage > 1 ? '' : 'disabled'">上一页</span>
         <ul>
             <li><a href="javascript:;" v-show="currentPage > 3 && num > 5" @click="pre">...</a></li>
-            <li v-for="index in items">
+            <li v-for="index in items" :key="index">
                 <router-link :to="{ name: 'page', params: { pid: index } }">{{ index }}</router-link>
             </li>
             <li><a href="javascript:;" v-show="currentPage < num - 2 && num > 5" @click="next">...</a></li>

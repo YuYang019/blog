@@ -39,11 +39,7 @@
                 deep: true
             }
         },
-//        methods: {
-//            ...mapActions([
-//                'showMsg'
-//            ])
-//        },
+
     }
 </script>
 
@@ -52,13 +48,7 @@
         font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
         background: #F2F2F2;
     }
-    /*.header-wrapper {*/
-        /*position: fixed;*/
-        /*top: 0;*/
-        /*left: 0;*/
-        /*width: 100%;*/
-        /*z-index: 9998;*/
-    /*}*/
+    
     .content {
         margin-top: 25px;
     }

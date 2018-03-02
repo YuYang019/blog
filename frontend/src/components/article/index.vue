@@ -9,7 +9,7 @@
                             <span class="split"></span>
                             <el-row>
                                 <el-col :span="20" :offset="2">
-                                    <Comment v-if="commentList && user" :commentList="commentList" :user="user"></Comment>
+                                    <Comment v-if="commentList" :commentList="commentList" :user="user"></Comment>
                                 </el-col>
                             </el-row>
                         </el-card>

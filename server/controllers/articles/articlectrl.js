@@ -101,9 +101,9 @@ exports.getArticleDetail = async (ctx, next) => {
     try {
         const article = await Article.findOne( { _id: id })
             .populate({
-                path: 'author',
-                select: 'username avatar',
-                match: { username: { $exists: true } }
+                path: 'author', // 指定要查询的表
+                select: 'username avatar', // 要查询的字段
+                match: { username: { $exists: true } } // 附加查询条件
             })
             .exec()
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="logined-wrapper">
         <span class="name">Hi，{{auth.user.username}}</span>
         <span class="split"></span>
         <options-btn></options-btn>
@@ -25,7 +25,7 @@
 </script>
 
 <style lang="sass" type="text/scss">
-    .wrapper {
+    .logined-wrapper {
         padding-top: 12px;
         &>span {
             display: inline-block;

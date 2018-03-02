@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="unlogin-wrapper">
         <login-btn></login-btn>
         <span class="split"></span>
         <register-btn></register-btn>
@@ -17,8 +17,8 @@
 </script>
 
 <style lang="sass" type="text/scss">
-    .wrapper {
-        padding-top: 15px;
+    .unlogin-wrapper {
+        padding-top: 12px;
         span {
             display: inline-block;
             vertical-align: middle;

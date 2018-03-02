@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <span class="name">{{auth.user.username}}</span>
+        <span class="name">Hi，{{auth.user.username}}</span>
         <span class="split"></span>
         <options-btn></options-btn>
         <publish-btn></publish-btn>
@@ -24,10 +24,10 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
+<style lang="sass" type="text/scss">
     .wrapper {
         padding-top: 12px;
-        span {
+        &>span {
             display: inline-block;
             vertical-align: middle;
             color: #bfcbd9;

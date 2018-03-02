@@ -2,7 +2,7 @@
     <div class="header clearfix">
         <ul class="left-nav">
             <li>
-                <router-link to="/">首页</router-link>
+                <router-link to="/">My Blog</router-link>
             </li>
         </ul>
         <div class="right-nav">

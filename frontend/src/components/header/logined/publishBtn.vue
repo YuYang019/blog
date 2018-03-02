@@ -1,6 +1,6 @@
 <template>
-    <span>
-        <el-button type="primary" icon="edit" @click="showDialog"></el-button>
+    <span class="publish-btn">
+        <el-button type="primary" icon="el-icon-edit" size="mini" @click="showDialog"></el-button>
         <el-dialog title="发布" :visible="showPublish" :before-close="beforeClose" width="65%">
             <div class="form-wrapper">
               <el-form :model="textForm" :rules="textRules" ref="textForm">
@@ -81,14 +81,13 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
-    span {
+<style lang="sass" type="text/scss">
+    .publish-btn {
         margin: 0 15px;
-        &>.el-button {
-            padding: 5px 8px;
-        }
         .btn {
             margin-top: 15px;
+            margin-left: 50%;
+            transform: translateX(-50%);
         }
     }
 </style>

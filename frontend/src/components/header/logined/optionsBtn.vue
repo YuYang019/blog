@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <span class="options-btn">
         <el-dropdown @command="handleCommand">
             <span class="el-dropdown-link"><i class="el-icon-setting"></i></span>
             <el-dropdown-menu slot="dropdown">
@@ -38,10 +38,10 @@
     }
 </script>
 
-<style lang="sass" type="text/scss" scoped>
-    span {
-        color: #bfcbd9;
+<style lang="sass" type="text/scss">
+    .options-btn {
         .el-dropdown-link {
+            color: #bfcbd9;
             .el-icon-setting {
                 font-size: 20px;
             }

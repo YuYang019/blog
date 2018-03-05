@@ -25,6 +25,7 @@
             handleCommand(command) {
                 switch (command) {
                     case 'changePw':
+                        this.handleChangePw()
                         break;
                     case 'quit':
                         this.logout()
@@ -33,7 +34,8 @@
                     default:
                         break;
                 }
-            }
+            },
+            handleChangePw() {}
         }
     }
 </script>

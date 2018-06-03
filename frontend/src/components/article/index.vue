@@ -35,7 +35,7 @@
         },
         computed: {
             ...mapState({
-                user: ({ auth }) => auth.user,
+                user: ({ user }) => user.user,
                 articleDetail: ({ articleDetail }) => articleDetail.item,
                 nextArticle: ({ articlePrenext }) => articlePrenext.next,
                 prevArticle: ({ articlePrenext }) => articlePrenext.prev,

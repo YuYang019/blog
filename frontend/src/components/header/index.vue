@@ -24,13 +24,13 @@
     export default {
         computed: {
             ...mapState({
-                // 相当于 auth: this.$store.state.auth
-                // 获取vuex，auth模块的state
-               auth: state => state.auth
+                // 相当于 user: this.$store.state.user
+                // 获取vuex，user模块的state
+               auth: state => state.user
             })
         },
         created() {
-            // auth模块的state包括token和user
+            // user模块的state包括token和user
             if (this.auth.token) {
                 this.getUserInfo()
             }

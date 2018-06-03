@@ -3,7 +3,7 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
-import auth from './modules/auth'
+import user from './modules/user'
 import showmsg from './modules/showmsg'
 import showdialog from './modules/showdialog'
 import articleList from './modules/article.list'
@@ -24,7 +24,7 @@ export default new Vuex.Store({
     actions,
     //getters,
     modules: {
-        auth,
+        user,
         showmsg,
         showdialog,
         articleList,

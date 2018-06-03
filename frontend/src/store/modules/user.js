@@ -2,6 +2,7 @@
  * Created by maoyuyang on 17/8/27.
  */
 import api from '../../api/index'
+import { API_ROOT } from '../../config'
 import { showMsg } from '../actions'
 import { getCookie, saveCookie, signOut } from '../../utils/authService'
 import {
@@ -12,13 +13,15 @@ import {
     ADD_USER_LIKES,
     DEL_USER_LIKES,
     HIDE_LOGIN_DIALOG,
-    HIDE_REGISTER_DIALOG
+    HIDE_REGISTER_DIALOG,
+    GET_CAPTCHA
 } from '../mutation-types'
 import dialog from './showdialog'
 
 const state = {
     token: getCookie('token') || null, // 让初始化的时候能够获取本地cookie
-    user: null
+    user: null,
+    captchaUrl: ''
 }
 
 const actions = {
@@ -89,7 +92,7 @@ const actions = {
                 let response = err.response
                 showMsg(store, response.data.error_msg, 'error')
             })
-    }
+    },
 }
 
 const mutations = {
@@ -132,6 +135,10 @@ const mutations = {
                 console.log(user)
             }
         }
+    },
+    // captcha
+    [GET_CAPTCHA] (state, action) {
+        state.captchaUrl = `${API_ROOT}/api/user/captcha?${Math.random()}`
     }
 }
 

@@ -2,7 +2,7 @@
     <span class="register-btn">
         <a href="javascript:;" @click="showDialog" class="btn">注册</a>
 
-        <el-dialog title="用户注册" size="tiny" :visible.sync="showRegister" :before-close="beforeClose">
+        <el-dialog title="用户注册" size="tiny" :visible.sync="showRegister" :before-close="beforeClose" width="30%">
             <div class="form-wrapper">
                 <el-form :model="registerForm" :rules="registerRules" ref="register">
                     <el-form-item prop="username">
@@ -21,6 +21,9 @@
                             <template slot="prepend"><i class="el-icon-edit"></i></template>
                         </el-input>
                     </el-form-item>
+                    <el-form-item prop="captcha">
+                        <captcha :value="registerForm.captcha" @input="handleCaptcha"></captcha>
+                    </el-form-item>  
                     <el-button type="primary" @click="localregister('register')" :loading="loading" class="block-btn">确 定
                     </el-button>
                 </el-form>
@@ -31,8 +34,12 @@
 
 <script>
     import { mapActions, mapMutations, mapState } from 'vuex'
+    import Captcha from '@/common/components/captcha'
 
     export default {
+        components: {
+            Captcha
+        },
         computed: {
             ...mapState({
                 showRegister: ({ showdialog }) => showdialog.showRegister
@@ -63,7 +70,8 @@
                 registerForm: {
                     username: '',
                     password: '',
-                    checkPass: ''
+                    checkPass: '',
+                    captcha: '',
                 },
                 registerRules: {
                     username: [
@@ -119,6 +127,12 @@
                     }
                 })
             },
+            handleCaptcha(value) {
+                this.registerForm = {
+                    ...this.registerForm,
+                    captcha: value,
+                }
+            },
             beforeClose() {
                 this.hideDialog()
             }
@@ -129,7 +143,6 @@
 <style lang="sass" type="text/scss" scoped>
     .register-btn {
         .form-wrapper {
-            width: 65%;
             margin: 0 auto;
             .block-btn {
                 display: block;

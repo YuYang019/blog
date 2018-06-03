@@ -2,7 +2,7 @@
  * Created by maoyuyang on 17/8/27.
  */
 
-// auth
+// user
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const USERINFO_SUCCESS = 'USERINFO_SUCCESS'
 export const LOGOUT_USER = 'LOGOUT_USER'
@@ -11,6 +11,9 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 export const UPDATE_USER = 'UPDATE_USER'
 export const ADD_USER_LIKES = 'ADD_USER_LIKES'
 export const DEL_USER_LIKES = 'DEL_USER_LIKES'
+
+// captcha
+export const GET_CAPTCHA = 'GET_CAPTCHA'
 
 // showmsg, showdialog
 export const SHOW_MSG = 'SHOW_MSG'

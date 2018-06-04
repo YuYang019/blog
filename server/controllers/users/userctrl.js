@@ -2,6 +2,7 @@
  * Created by maoyuyang on 17/8/9.
  */
 const mongoose = require('mongoose')
+const captcha = require('trek-captcha')
 const User = require('../../model/user.model')
 const auth = require('../../auth/auth')
 
@@ -20,12 +21,18 @@ exports.getMe = async (ctx, next) => {
 exports.login = async (ctx, next) => {
     let username = ctx.request.body.username
     let password = ctx.request.body.password
+    let captcha = ctx.request.body.captcha
+
+    console.log(ctx.session.captcha)
 
     try {
         const user = await User.findOne({ username: username })
         if (!user || !user.authenticate(password)) {
             ctx.status = 403
            return ctx.body = { error_msg: '用户名或密码错误.' }
+        } else if (ctx.session.captcha !== captcha) {
+            ctx.status = 403
+            return ctx.body = { error_msg: '验证码错误' }
         }
         const token = auth.signToken(user._id)
         ctx.body = { token: token }
@@ -58,5 +65,13 @@ exports.register = async (ctx, next) => {
     } catch(err) {
         ctx.throw(err)
     }
+}
+
+exports.getCaptcha = async (ctx, next) => {
+    const { token, buffer } = await captcha({size: 6})
+    ctx.session.captcha = token
+    console.log('get', ctx.session.captcha)
+    ctx.status = 200
+    ctx.body = buffer
 }
 

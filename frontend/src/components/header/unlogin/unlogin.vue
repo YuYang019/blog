@@ -28,7 +28,7 @@
                 font-size: 14px;
             }
         }
-        .split {
+        &>.split {
             margin: 0 20px;
             width: 1px;
             height: 20px;

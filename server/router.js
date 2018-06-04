@@ -5,6 +5,7 @@ const Router  = require('koa-router')
 const userctrl = require('./controllers/users/userctrl')
 const articlectrl = require('./controllers/articles/articlectrl')
 const commentctrl = require('./controllers/comment/commentctrl')
+const snsctrl = require('./controllers/sns/snsctrl')
 const auth = require('./auth/auth')
 
 const router = new Router()
@@ -16,6 +17,7 @@ router
     .get('/api/user/me', auth.isAuthenticated(), userctrl.getMe)
     .post('/api/user/login', userctrl.login)
     .post('/api/user/register', userctrl.register)
+    .get('/api/user/captcha', userctrl.getCaptcha)
 
     // 文章
     .get('/api/article/list', articlectrl.getFrontArticleList)
@@ -31,5 +33,13 @@ router
     .post('/api/comment/reply', auth.isAuthenticated(), commentctrl.addNewReply)
     //.delete('/api/comment/reply', auth.isAuthenticated(), commentctrl.delReply)
     .get('/api/comment/conversation', commentctrl.getConversation)
+
+    // github
+    .get('/github/oauth/login', snsctrl.githubLogin)
+    .get('/github/oauth/callback', snsctrl.githubCallback)
+
+    .get('/', async (ctx, next) => {
+        ctx.body = 'hello world'
+    })
 
 module.exports = router

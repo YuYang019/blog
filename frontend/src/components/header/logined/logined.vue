@@ -15,7 +15,7 @@
     export default {
         computed: {
             ...mapState({
-                auth: state => state.auth
+                auth: state => state.user
             })
         },
         components: {

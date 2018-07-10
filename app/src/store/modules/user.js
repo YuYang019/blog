@@ -7,8 +7,7 @@ import {
 } from '../actions'
 import {
   getCookie,
-  saveCookie,
-  signOut
+  signOut,
 } from '../../utils/authService'
 import {
   LOGIN_SUCCESS,
@@ -24,7 +23,7 @@ import {
 import dialog from './showdialog'
 
 const state = {
-  token: getCookie('token') || null, // 让初始化的时候能够获取本地cookie
+  token: getCookie('SESSION_ID') || null, // 让初始化的时候能够获取本地cookie
   user: null,
   captchaUrl: ''
 }
@@ -36,22 +35,19 @@ const actions = {
     showMsg(store, '退出成功', 'success')
   },
   login(store, userInfo) {
-    // console.log(userInfo)
     api.login(userInfo)
       .then(response => {
         if (response.status !== 200) {
           return showMsg(store, response.error_msg)
         }
         // 登录成功返回token
-        const token = response.data.token
+        // const token = response.data.token
         // 存入cookie
-        saveCookie('token', token)
+        // saveCookie('token', token)
         // 获取个人信息
         store.dispatch('getUserInfo')
         // 登录成功，将token存入state
-        store.commit(LOGIN_SUCCESS, {
-          token: token
-        })
+        store.commit(LOGIN_SUCCESS)
         // 关闭登录框
         store.commit(HIDE_LOGIN_DIALOG)
         // 成功消息

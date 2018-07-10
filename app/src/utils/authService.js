@@ -11,7 +11,6 @@ let cookieConfig = {
 }
 
 export function saveCookie(name, value) {
-  console.log(value)
   cookies.set(name, value, cookieConfig)
 }
 
